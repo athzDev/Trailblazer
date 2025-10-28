@@ -4,6 +4,29 @@ Trailblazer is a Next.js travel and itinerary planner featuring collaborative pl
 
 ## Getting started
 
+Trailblazer uses [pnpm](https://pnpm.io) via Node's Corepack. If you do not
+already have it available, run `corepack enable` (bundled with recent Node
+releases) or install it manually with `npm install -g pnpm`. You can also use
+`npm` or `yarn` in a pinch—the scripts are cross-compatible.
+
+```bash
+# install dependencies (choose one)
+corepack prepare pnpm@8.15.4 --activate && pnpm install
+# or
+npm install
+
+# prepare the database
+pnpm prisma generate
+pnpm prisma db push
+pnpm run seed
+
+# start the app
+pnpm dev
+```
+
+If you opted for `npm` or `yarn`, swap the `pnpm <command>` entries above for
+`npm run <command>` / `yarn <command>` respectively.
+
 ```bash
 pnpm install
 pnpm prisma generate
