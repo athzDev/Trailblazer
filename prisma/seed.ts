@@ -49,7 +49,6 @@ async function main() {
       data: {
         ownerId: user.id,
         ...trip,
-        destination: JSON.stringify(trip.destination),
       },
     });
 
@@ -72,7 +71,7 @@ async function main() {
             title: 'Breakfast at local cafe',
             start: addHours(day.date, 9),
             end: addHours(day.date, 10),
-            tags: JSON.stringify(['food']),
+            tags: ['food'],
             order: 0,
           },
           {
@@ -80,7 +79,7 @@ async function main() {
             title: index === 0 ? 'City walking tour' : 'Museum visit',
             start: addHours(day.date, 11),
             end: addHours(day.date, 13),
-            tags: JSON.stringify(['culture']),
+            tags: ['culture'],
             order: 1,
           },
           {
@@ -88,7 +87,7 @@ async function main() {
             title: 'Dinner reservation',
             start: addHours(day.date, 19),
             end: addHours(day.date, 21),
-            tags: JSON.stringify(['food']),
+            tags: ['food'],
             order: 2,
           },
         ],

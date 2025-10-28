@@ -32,15 +32,8 @@ export async function POST(request: NextRequest) {
   const trip = await prisma.trip.create({
     data: {
       ...parsed.data,
-      destination: JSON.stringify(parsed.data.destination),
       ownerId,
     },
   });
-  return NextResponse.json(
-    {
-      ...trip,
-      destination: parsed.data.destination,
-    },
-    { status: 201 }
-  );
+  return NextResponse.json(trip, { status: 201 });
 }

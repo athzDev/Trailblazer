@@ -27,6 +27,14 @@ pnpm dev
 If you opted for `npm` or `yarn`, swap the `pnpm <command>` entries above for
 `npm run <command>` / `yarn <command>` respectively.
 
+```bash
+pnpm install
+pnpm prisma generate
+pnpm prisma db push
+pnpm run seed
+pnpm dev
+```
+
 Create a `.env` file based on `.env.example`.
 
 ## Quick visual preview
