@@ -19,6 +19,8 @@ export async function DashboardOverview() {
   });
 
   const nextTrip = trips[0];
+  const nextTripDestination = nextTrip ? toStringArray(nextTrip.destination) : [];
+  const weather = nextTripDestination.length > 0 ? await getWeatherForecast(nextTripDestination[0]) : [];
   const weather = nextTrip ? await getWeatherForecast(nextTrip.destination[0] ?? 'Paris') : [];
 
   return (

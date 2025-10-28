@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { createTripSchema } from '@/lib/validations/trip';
 import { auth } from '@/lib/auth';
+import { toStringArray } from '@/lib/utils';
 
 export async function GET() {
   const session = await auth();
@@ -9,7 +10,12 @@ export async function GET() {
     where: session?.user?.id ? { ownerId: session.user.id } : {},
     orderBy: { start: 'desc' },
   });
-  return NextResponse.json(trips);
+  return NextResponse.json(
+    trips.map((trip) => ({
+      ...trip,
+      destination: toStringArray(trip.destination),
+    }))
+  );
 }
 
 export async function POST(request: NextRequest) {
