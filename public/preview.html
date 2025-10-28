@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trailblazer Preview</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #050816;
+        --bg-card: rgba(15, 23, 42, 0.72);
+        --accent: #6366f1;
+        --text: #f1f5f9;
+        --muted: #cbd5f5;
+        --radius: 28px;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top, #1e3a8a 0%, transparent 65%), var(--bg);
+        background-attachment: fixed;
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 64px 16px 120px;
+        gap: 72px;
+      }
+      header {
+        max-width: 960px;
+        text-align: center;
+        display: grid;
+        gap: 24px;
+        align-items: center;
+        justify-items: center;
+        padding: 40px;
+        border-radius: var(--radius);
+        backdrop-filter: blur(32px);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(17, 24, 39, 0.66));
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+      }
+      header span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 18px;
+        font-size: 14px;
+        border-radius: 9999px;
+        background: rgba(99, 102, 241, 0.16);
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      header h1 {
+        font-size: clamp(2.75rem, 6vw, 3.75rem);
+        line-height: 1.05;
+        margin: 0;
+      }
+      header p {
+        margin: 0;
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 8px;
+      }
+      .cta a {
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+      }
+      .cta a.primary {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 16px 30px rgba(99, 102, 241, 0.35);
+      }
+      .cta a.primary:hover {
+        transform: translateY(-2px);
+      }
+      .cta a.secondary {
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        color: var(--muted);
+        background: rgba(15, 23, 42, 0.4);
+      }
+      section.features {
+        max-width: 1100px;
+        display: grid;
+        gap: 24px;
+        padding: 0 12px;
+      }
+      section.features h2 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 2.6rem);
+      }
+      .feature-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .feature-card {
+        padding: 28px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        background: var(--bg-card);
+        backdrop-filter: blur(24px);
+        box-shadow: 0 18px 35px rgba(8, 11, 26, 0.28);
+      }
+      .feature-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+      }
+      .feature-card p {
+        margin: 0;
+        color: rgba(226, 232, 240, 0.76);
+        line-height: 1.5;
+      }
+      footer {
+        margin-top: 40px;
+        font-size: 0.85rem;
+        color: rgba(148, 163, 184, 0.8);
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 48px 16px 96px;
+        }
+        header {
+          padding: 36px 20px;
+        }
+        .feature-card {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span>Introducing Trailblazer</span>
+      <h1>Design unforgettable journeys with collaborative itineraries.</h1>
+      <p>
+        Plan, budget, and explore together. Trailblazer keeps your crew aligned with live maps, weather, expenses, packing,
+        and more—online or off.
+      </p>
+      <div class="cta">
+        <a class="primary" href="#">Launch app</a>
+        <a class="secondary" href="#">Play demo</a>
+      </div>
+    </header>
+    <section class="features">
+      <h2>Why travelers choose Trailblazer</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Build cinematic itineraries</h3>
+          <p>Drag-and-drop activities, map beautiful routes, and share with your crew.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Stay in sync offline</h3>
+          <p>Trailblazer works on flights and subways. Review your trip offline then sync.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Plan smarter with insights</h3>
+          <p>Budgets, weather, packing, docs, and reminders are one tap away.</p>
+        </article>
+      </div>
+    </section>
+    <footer>Preview inspired by the Trailblazer landing experience.</footer>
+  </body>
+</html>

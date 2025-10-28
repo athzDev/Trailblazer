@@ -14,6 +14,12 @@ pnpm dev
 
 Create a `.env` file based on `.env.example`.
 
+## Quick visual preview
+
+If you just want to glimpse the landing experience without setting up the toolchain, open `public/preview.html` in any
+modern browser. It mirrors the hero and feature highlights defined in `app/page.tsx`, making it easy to share a static
+peek of Trailblazer directly from the repo.
+
 ## Feature overview
 
 - Landing page with parallax hero and Framer Motion animations
