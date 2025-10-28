@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  password  String?
+  trips     Trip[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Trip {
+  id           String        @id @default(cuid())
+  ownerId      String
+  owner        User          @relation(fields: [ownerId], references: [id])
+  title        String
+  destination  String        @default("[]")
+  start        DateTime
+  end          DateTime
+  travelers    Int?
+  budgetCents  Int?
+  currency     String        @default("USD")
+  coverUrl     String?
+  days         Day[]
+  places       Place[]
+  expenses     Expense[]
+  packingItems PackingItem[]
+  invites      Invitation[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Day {
+  id        String    @id @default(cuid())
+  tripId    String
+  trip      Trip      @relation(fields: [tripId], references: [id])
+  date      DateTime
+  activities Activity[]
+  notes     String?
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  dayId     String
+  day       Day      @relation(fields: [dayId], references: [id])
+  title     String
+  start     DateTime?
+  end       DateTime?
+  placeId   String?
+  costCents Int?
+  notes     String?
+  tags      String   @default("[]")
+  order     Int      @default(0)
+}
+
+model Place {
+  id         String  @id @default(cuid())
+  tripId     String
+  trip       Trip    @relation(fields: [tripId], references: [id])
+  name       String
+  address    String?
+  lat        Float
+  lon        Float
+  category   String?
+  externalId String?
+  notes      String?
+}
+
+model Expense {
+  id         String   @id @default(cuid())
+  tripId     String
+  trip       Trip     @relation(fields: [tripId], references: [id])
+  title      String
+  amountCents Int
+  currency   String   @default("USD")
+  category   String
+  date       DateTime
+}
+
+model PackingItem {
+  id        String  @id @default(cuid())
+  tripId    String
+  trip      Trip    @relation(fields: [tripId], references: [id])
+  label     String
+  checked   Boolean @default(false)
+  suggested Boolean @default(false)
+}
+
+model Invitation {
+  id        String   @id @default(cuid())
+  tripId    String
+  trip      Trip     @relation(fields: [tripId], references: [id])
+  email     String
+  role      String   @default("editor")
+  token     String   @unique
+  accepted  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
